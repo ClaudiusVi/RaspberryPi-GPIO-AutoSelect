@@ -19,6 +19,10 @@ For input pins, the script configures GPIO 17, 18, 23, and 27 as inputs with pul
 
 To see this functionality in action, simply run the script on your Raspberry Pi. Ensure you have connected appropriate peripherals (like LEDs for output pins and buttons for input pins) to observe the behavior.
 
+python3 main.py
+
+Press Enter at any time to stop the script and safely release the GPIO resources
+
 bash
 Copy code
 git clone https://github.com/ClaudiusVi/RaspberryPi-GPIO-AutoSelect.git
