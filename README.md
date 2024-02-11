@@ -31,6 +31,7 @@ gpid-out-in-interrupt.py - Advanced GPIO Handling with Interrupts
 Building upon main.py, the gpid-out-in-interrupt.py script introduces more complex GPIO handling capabilities, including monitoring input pins for state changes and implementing an interrupt-like routine.
 
 
+
 gpid-out-in-interupt.py - additional Features:
 
 Monitors GPIO 21 for state changes, printing the current state to the terminal only upon changes:
