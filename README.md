@@ -44,12 +44,8 @@ Oscilloscope Measurement for GPIO 22:
 
 Oscilloscope Measurement for GPIO 22:
 
-"  1 |------|       |------|        |------|      |------|      |------|       "  
-"    |      |       |      |       |      |       |      |      |      |      "
-"  0 |      |-------|      |-------|      |-------|      |------|      |------|" 
-"    |
-"    |------|--- ---|------|---- --|------|-------|------|------|------|------"
-"      0     0.01     0.02   0.03    0.04   0.05    0.06   0.07   0.08   0.09 (seconds)"
+![Oscilloscope Measurement for GPIO 22](link-to-your-image.png)
+
 
 
 
