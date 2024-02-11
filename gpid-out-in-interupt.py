@@ -31,7 +31,6 @@ Contact: cv@ntx.ch
 
 import gpiod
 import time
-import threading
 
 def get_rpi_model():
     try:
@@ -58,8 +57,10 @@ def monitor_gpio21(line, last_state):
         print(f"GPIO 21 is now: {current_state}")
         last_state[0] = current_state  # Update the last known state
 
-def interrupt_routine():
-    print("Interrupt on line 20")
+def interrupt_routine(last_interrupt_state):
+    if last_interrupt_state[0] == 1:  # Check for falling edge
+        print("Interrupt on line 20")
+    last_interrupt_state[0] = 0  # Update the last interrupt state
 
 def main():
     model = get_rpi_model()
@@ -85,6 +86,7 @@ def main():
     output_line.request(consumer='example', type=gpiod.LINE_REQ_DIR_OUT)
 
     last_state_gpio21 = [gpio21_line.get_value()]  # List to hold the last state of GPIO 21
+    last_interrupt_state = [1]  # Assume initial state is high to detect the first falling edge
 
     try:
         while True:
@@ -97,9 +99,12 @@ def main():
             # Monitor GPIO 21 for state changes
             monitor_gpio21(gpio21_line, last_state_gpio21)
 
-            # Check GPIO 20 for interrupt condition
-            if gpio20_line.get_value() == 0:
-                interrupt_routine()
+            # Check GPIO 20 for falling edge and trigger interrupt routine
+            current_state_gpio20 = gpio20_line.get_value()
+            if current_state_gpio20 == 0 and last_interrupt_state[0] == 1:
+                interrupt_routine(last_interrupt_state)
+            elif current_state_gpio20 == 1:
+                last_interrupt_state[0] = 1  # Reset the interrupt state when GPIO 20 goes high
 
     except KeyboardInterrupt:
         print("Program terminated by user.")
