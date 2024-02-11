@@ -1,4 +1,3 @@
-RaspberryPi-GPIO-AutoSelect
 RaspberryPi-GPIO-AutoSelect is a Python script designed to automatically select the appropriate GPIO chip for various Raspberry Pi models. This utility facilitates seamless GPIO programming, especially for SPI applications, by dynamically identifying the Raspberry Pi model in use and adjusting GPIO chip selections accordingly. It's aimed at developers seeking a model-agnostic approach to GPIO manipulation, ensuring compatibility and performance across different Raspberry Pi versions.
 
 Features
