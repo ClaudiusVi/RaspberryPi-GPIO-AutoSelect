@@ -44,7 +44,7 @@ Oscilloscope Measurement for GPIO 22:
 
 Oscilloscope Measurement for GPIO 22:
 
-![Oscilloscope Measurement for GPIO 22](link-to-your-image.png)
+![Oscilloscope Measurement for GPIO 22](gpio-out.png)
 
 
 
