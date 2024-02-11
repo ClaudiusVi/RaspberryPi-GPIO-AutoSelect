@@ -9,38 +9,51 @@ Supports Raspberry Pi 3, 4, and 5 models.
 Installation
 Clone this repository to your local machine using:
 
-Functionality
-This script includes a demonstration feature where GPIO 22 is used as an output pin that is toggled to create a pulsing effect. Additionally, several other GPIO pins (17, 18, 23, and 27) are configured as inputs with pull-up resistors enabled. This setup serves as an example of how to use the script for both input and output GPIO tasks on a Raspberry Pi.
+RaspberryPi-GPIO-AutoSelect
 
-Testing GPIO Outputs and Inputs
-The main program includes a loop that toggles GPIO 22, effectively turning it on and off at a specified interval (RESET_TIME), demonstrating how to control an output pin. This can be useful for tasks such as blinking an LED, triggering relays, or any other digital output tasks.
+This repository contains two Python scripts aimed at simplifying GPIO programming across different Raspberry Pi models. By dynamically identifying the Raspberry Pi model, these scripts automatically select the appropriate GPIO chip, making it easier for developers to interact with GPIO pins for various applications.
 
-For input pins, the script configures GPIO 17, 18, 23, and 27 as inputs with pull-up resistors. This configuration is commonly used when dealing with switches, buttons, or any sensors that require a pull-up resistor to ensure a known state when the input is not actively driven.
+main.py - Basic GPIO Manipulation
 
-To see this functionality in action, simply run the script on your Raspberry Pi. Ensure you have connected appropriate peripherals (like LEDs for output pins and buttons for input pins) to observe the behavior.
+The main.py script offers a straightforward demonstration of GPIO pin setup as inputs and outputs, making it an excellent starting point for those new to Raspberry Pi GPIO programming.
 
-python3 main.py
+Features:
 
-Press Enter at any time to stop the script and safely release the GPIO resources
+Dynamic detection of the Raspberry Pi model and selection of the corresponding GPIO chip.
+Example of toggling an output pin (GPIO 22) to create a pulsing effect, suitable for blinking an LED or similar applications.
+Configuration of additional GPIO pins as inputs with pull-up resistors, typical for buttons or switches.
+Terminal Output:
+When running the script, it outputs the detected Raspberry Pi model and the GPIO chip being used. For instance:
 
-bash
-Copy code
-git clone https://github.com/ClaudiusVi/RaspberryPi-GPIO-AutoSelect.git
-Usage
-To use the utility in your project, import the script and initialize your GPIO tasks as needed. The script will automatically select the correct GPIO chip:
+Model detected: Raspberry Pi 5 Model B Rev 1.0 The GPIO chip for this model is: gpiochip4
 
-python
-Copy code
-from RaspberryPi-GPIO-AutoSelect import auto_select_gpio_chip
+gpid-out-in-interrupt.py - Advanced GPIO Handling with Interrupts
 
-# Initialize and use GPIO pins as required
-Contributing
-Contributions are welcome! If you have suggestions or improvements, feel free to fork the repository and submit a pull request, or open an issue for discussion.
+Building upon main.py, the gpid-out-in-interrupt.py script introduces more complex GPIO handling capabilities, including monitoring input pins for state changes and implementing an interrupt-like routine.
 
-License
-This project is freely available under the MIT License. See the LICENSE file for more details.
+Additional Features:
 
-Contact
-For any inquiries or feedback, please contact Claudius Viviani at cv@ntx.ch.
+Monitors GPIO 21 for state changes, printing the current state to the terminal only upon changes:
+GPIO 21 is now: 1 GPIO 21 is now: 0
 
-Feel free to adjust the content according to your project's specifics or personal preferences. Remember to add the actual LICENSE file to your repository with the MIT License text, replacing [year] with the current year and [full name] with "Claudius Viviani".
+Triggers an interrupt routine when GPIO 20 goes low, simulating an interrupt mechanism:
+Interrupt on line 20
+
+Continues the pulsing effect on GPIO 22, generating a square wave signal and demonstrating precise output control with a 0.01-second pulse length.
+Usage:
+
+To use these scripts, clone the repository to your Raspberry Pi and run the desired script. Ensure you have connected the necessary peripherals to observe the script's behavior.
+
+Contributing:
+
+Contributions are encouraged to enhance or expand the scripts' functionalities. Fork the repository, apply your changes, and submit a pull request for review.
+
+License:
+
+This project is made available under the MIT License, permitting free usage and modification of the scripts.
+
+Contact:
+
+For questions or feedback, please reach out to Claudius Viviani at cv@ntx.ch.
+
+
