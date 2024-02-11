@@ -30,15 +30,29 @@ gpid-out-in-interrupt.py - Advanced GPIO Handling with Interrupts
 
 Building upon main.py, the gpid-out-in-interrupt.py script introduces more complex GPIO handling capabilities, including monitoring input pins for state changes and implementing an interrupt-like routine.
 
-Additional Features:
+
+gpid-out-in-interupt.py - additional Features:
 
 Monitors GPIO 21 for state changes, printing the current state to the terminal only upon changes:
 GPIO 21 is now: 1 GPIO 21 is now: 0
 
-Triggers an interrupt routine when GPIO 20 goes low, simulating an interrupt mechanism:
+Monitors GPIO 20 Triggers an interrupt routine when GPIO 20 goes low, simulating an interrupt mechanism, printing the current state to the terminal only upon changes::
 Interrupt on line 20
 
 Continues the pulsing effect on GPIO 22, generating a square wave signal and demonstrating precise output control with a 0.01-second pulse length.
+Oscilloscope Measurement for GPIO 22:
+
+Oscilloscope Measurement for GPIO 22:
+
+  1 |------|       |------|       |------|       |------|      |------|         
+    |      |       |      |       |      |       |      |      |      |      
+  0 |      |-------|      |-------|      |-------|      |------|      |------| 
+    |
+    |------|--- ---|------|---- --|------|-------|------|------|------|------
+      0     0.01     0.02   0.03    0.04   0.05    0.06   0.07   0.08   0.09 (seconds)
+
+
+
 Usage:
 
 To use these scripts, clone the repository to your Raspberry Pi and run the desired script. Ensure you have connected the necessary peripherals to observe the script's behavior.
